@@ -33,7 +33,7 @@ def main():
             return
         elif message.content.startswith(perms['command_key']) and message.channel.id in perms['super']['channels']:
             message = pop_command_key(message, perms)
-            
+            print(print(repr(message)))
 
             args = message.content.split(' ')
             print(args)
