@@ -2,15 +2,18 @@
 import discord
 import json
 import subprocess
-import os
+
 
 def main():
     #getting key file
-        #getting key file
     try:
-        client_token = os.getenv("DISCORD_BOT_TOKEN")
+        with open("../.discord.key", "r") as key_file:
+            client_token=key_file.read()
+            print('found .discord.key loaded')
+            if not client_token:
+                raise Exception
     except: 
-        print('Error when trying to read token ....... Are you sure you\'re allowed to be doing this?')
+        print('Error when trying to read .discord.key, make sure you have the key file present in the same directory as this code ....... Are you sure you\'re allowed to be doing this?')
 
     #creating/opening state file stores states and parameters of discord bot incase of random shutdown.
     perms=update_perms()
@@ -21,7 +24,7 @@ def main():
     @client.event
     async def on_ready():
         print('We have logged in as {0.user}'.format(client))
-        print('TOBOR IS IN!')
+        print('WELCOME TOBOR IS IN!')
 
     @client.event
     async def on_message(message):
