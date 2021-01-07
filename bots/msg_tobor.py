@@ -35,7 +35,7 @@ def main():
             message = pop_command_key(message, perms)
 
             args = message.content.split(' ')
-            
+            # remove empty strings 
             args = [a for a in args if a != '']
             
             await command_handler( message, args)
