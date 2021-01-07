@@ -36,7 +36,7 @@ def main():
 def update_perms():
     #running a git pull to get most recent changes
     subprocess.call(["git", "pull"])
-    with open('../perms.json', 'r') as f:
+    with open('./perms.json', 'r') as f:
         return json.loads(f.read())
     print('updated json')
 
