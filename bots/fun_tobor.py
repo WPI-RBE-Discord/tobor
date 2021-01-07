@@ -48,6 +48,9 @@ async def fun_message(message):
     elif message.content.casefold() == 'bad robot':
         await message.channel.send('sorry :frowning:')
 
+    elif 'emu' in message.content.casefold(): 
+        await message.add_reaction('\U0001f6ab')
+
     elif 'bat' in message.content.casefold(): 
         await message.add_reaction('\U0001f987')
 
