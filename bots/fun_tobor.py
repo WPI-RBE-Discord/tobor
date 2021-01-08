@@ -57,8 +57,8 @@ async def fun_message(message):
     if 'detail' in message.content.casefold(): 
         await message.channel.send('details details are no fun unless you ignore all of em')
 
-    if 'saftey' in message.content.casefold():
-        await message.channel.send('saftey third')
+    if 'safety' in message.content.casefold():
+        await message.channel.send('safety third')
 
     if 'robot uprising' in message.content.casefold():
         await message.channel.send('http://gph.is/1MUHsIC')
