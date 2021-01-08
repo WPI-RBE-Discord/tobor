@@ -1,3 +1,4 @@
+
 #importing useful stuff
 import discord
 import json
@@ -68,4 +69,5 @@ async def fun_message(message):
 
 
 #run main
-main()
+if __name__ == "__main__":
+    main()
