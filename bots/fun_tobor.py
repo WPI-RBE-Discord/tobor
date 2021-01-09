@@ -57,7 +57,7 @@ async def fun_message(perms ,message):
             await message.channel.send('sorry :frowning:')
 
         # occasionally funny 
-        if random.randint(0,10) == 5:
+        if random.randint(0,9) == 5:
             
             if 'detail' in message.content.casefold(): 
                 await message.channel.send('details details are no fun unless you ignore all of em')
