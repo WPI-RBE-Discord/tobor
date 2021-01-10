@@ -49,21 +49,16 @@ async def fun_message(perms ,message):
     if 'bat' in message.content.casefold(): 
         await message.add_reaction('\U0001f987')
 
-    print('channel_id')
-    print(message.channel.id not in perms['blacklist']['channels'])
-    print('category_id')
-    print(message.channel.category_id not in perms['blacklist']['channels'])
-
     if message.channel.id not in perms['blacklist']['channels'] and message.channel.category_id not in perms['blacklist']['channels']:
         #random fun stuff
-        if message.content.casefold() == 'good tobor':
+        if message.content.casefold() == 'good robot':
             await message.channel.send(':smile: :smile: :smile:')
 
-        elif message.content.casefold() == 'bad tobor':
+        elif message.content.casefold() == 'bad robot':
             await message.channel.send('sorry :frowning:')
 
         # occasionally funny 
-        if random.randint(0,9) == 5:
+        if random.randint(0,6) == 0:
             
             if 'detail' in message.content.casefold(): 
                 await message.channel.send('details details are no fun unless you ignore all of em')
