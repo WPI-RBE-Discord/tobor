@@ -49,6 +49,9 @@ async def fun_message(perms ,message):
     if 'bat' in message.content.casefold(): 
         await message.add_reaction('\U0001f987')
 
+    print(perms['blacklist']['channels'])
+    print(message.channel.id)
+    print(message.channel.category_id)
 
     if message.channel.id not in perms['blacklist']['channels'] and message.channel.category_id not in perms['blacklist']['channels']:
         #random fun stuff
