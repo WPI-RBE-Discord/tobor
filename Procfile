@@ -1,1 +1,1 @@
-tobor: bash launch.sh 
+tobor: python bots/main.py

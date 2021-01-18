@@ -5,48 +5,18 @@ import subprocess
 import os
 
 
+async def msg_processor(perms ,message, client):
+    if message.content.startswith(perms['command_key']) and message.channel.id in perms['super']['channels']:
+        message = pop_command_key(message, perms)
 
-def main():
-    #getting key file
-    try:
-        client_token = os.getenv("DISCORD_BOT_TOKEN")
-    except: 
-        print('Error when trying to read token ....... Are you sure you\'re allowed to be doing this?')
-
-    
-    #creating/opening state file stores states and parameters of discord bot incase of random shutdown.
-    global perms 
-    perms = update_perms()
-
-    #creatng discord client 
-    global client 
-    client= discord.Client()
-    
-    @client.event
-    async def on_ready():
-        print('We have logged in as {0.user}'.format(client))
-        print('MSG_TOBOR IS IN!')
-
-    @client.event
-    async def on_message(message):
-        if message.author == client.user:
-            return
-        elif message.content.startswith(perms['command_key']) and message.channel.id in perms['super']['channels']:
-            message = pop_command_key(message, perms)
-
-            args = message.content.split(' ')
-            # remove empty strings 
-            args = [a for a in args if a != '']
-            
-            await command_handler( message, args)
-
-            
-
-
-    client.run(client_token)
+        args = message.content.split(' ')
+        # remove empty strings 
+        args = [a for a in args if a != '']
+        
+        await command_handler( message, args, client)
 
 #msg_commands
-async def post(message, args):
+async def post(message, args, client):
     
     try:
         #get channel id 
@@ -67,7 +37,7 @@ async def post(message, args):
     except (ValueError, IndexError):
         await message.channel.send(f't! msg post <channel_id> <msg content>')
 
-async def edit(message, args):
+async def edit(message, args, client):
     #get channel id 
     try:
         channel_id = int(args.pop(0))
@@ -92,7 +62,7 @@ async def edit(message, args):
     except (ValueError, IndexError):
         await message.channel.send(f't! msg edit <channel_id> <message_id> content')
 
-async def delete(message, args):
+async def delete(message, args, client):
     #get channel id 
     try:
         channel_id = int(args.pop(0))
@@ -120,7 +90,7 @@ async def delete(message, args):
 
 
 #command handler
-async def command_handler(message, args):
+async def command_handler(message, args, client):
 
     msg_commands= {
         'post'   : post,
@@ -133,7 +103,7 @@ async def command_handler(message, args):
         del args[0]
         if args[0] in msg_commands.keys():
             cmd = args.pop(0)
-            await msg_commands[cmd](message, args)
+            await msg_commands[cmd](message, args, client)
         else: 
             await message.channel.send(f'No command {args[0]} in msg command')
 
@@ -156,7 +126,3 @@ def update_perms():
     print('updated json')
 
 
-
-#run main
-if __name__ == "__main__":
-    main()
