@@ -19,6 +19,8 @@ async def fun_message(perms ,message):
     if 'bat' in message.content.casefold(): 
         await message.add_reaction('\U0001f987')
 
+    
+
     if message.channel.id not in perms['blacklist']['channels'] and message.channel.category_id not in perms['blacklist']['channels']:
         #random fun stuff
         if message.content.casefold() == 'good robot':
@@ -26,6 +28,9 @@ async def fun_message(perms ,message):
 
         elif message.content.casefold() == 'bad robot':
             await message.channel.send('sorry :frowning:')
+
+        if message.content.casefold() == 'oh my god I hate turtles so so much, they are the worst creatures':
+            await message.channel.send('https://filebin.net/9t6ohms5ry72yq90/tobor_msg.txt?t=snacmo9b')
 
         # occasionally funny 
         if random.randint(0,6) == 0:
