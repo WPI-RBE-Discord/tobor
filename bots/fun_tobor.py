@@ -29,9 +29,6 @@ async def fun_message(perms ,message):
         elif message.content.casefold() == 'bad robot':
             await message.channel.send('sorry :frowning:')
 
-        elif message.content.casefold() == 'i love plastic straws':
-            await message.channel.send('https://filebin.net/9t6ohms5ry72yq90/tobor_msg.txt?t=snacmo9b')
-
         # occasionally funny 
         if random.randint(0,6) == 0:
             
