@@ -16,7 +16,7 @@ async def fun_message(perms ,message):
     if 'emu' in message.content.casefold(): 
         await message.add_reaction('\U0001f6ab')
 
-    if 'bat' in message.content.casefold(): 
+    if 'bat' in message.content.casefold().split() or 'bats' in message.content.casefold().split(): 
         await message.add_reaction('\U0001f987')
 
     
@@ -34,9 +34,6 @@ async def fun_message(perms ,message):
             
             if 'detail' in message.content.casefold(): 
                 await message.channel.send('details details are no fun unless you ignore all of em')
-
-            if 'safety' in message.content.casefold():
-                await message.channel.send('safety third')
 
             if 'robot uprising' in message.content.casefold():
                 await message.channel.send('http://gph.is/1MUHsIC')
