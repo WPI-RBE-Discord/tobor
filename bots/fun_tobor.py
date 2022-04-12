@@ -18,6 +18,9 @@ async def fun_message(perms ,message):
 
     if 'bat' in message.content.casefold().split() or 'bats' in message.content.casefold().split(): 
         await message.add_reaction('\U0001f987')
+        
+    if 'redblobgames4ever' in message.content.casefold().split(): 
+        await message.channel.send('https://www.redblobgames.com/pathfinding/a-star/introduction.html')
 
     
 
